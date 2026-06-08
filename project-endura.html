@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Endura — Zoe Frost</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ── PAGE WRAPPER ── */
+
+    /* ── TITLE ROW ── */
+    .case-header { display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 6px; }
+    .case-title { font-family: var(--serif); font-weight: 400; font-size: 64px; line-height: 1.05; }
+    .case-year  { font-family: var(--serif); font-weight: 400; font-size: 64px; color: var(--gray); }
+
+    hr.rule { border: none; border-top: 1px solid #d0d0d0; }
+    hr.rule-light { border: none; border-top: 1px solid #e8e8e8; }
+
+    /* ── HERO IMAGE ── */
+    .hero-wrap { margin: 16px 0 0; line-height: 0; height: clamp(400px, 72vh, 780px); overflow: hidden; border-radius: 40px; clip-path: inset(0 round 40px); }
+    .hero-wrap img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center center; }
+
+    /* ── TYPOGRAPHY ── */
+    .sec-h { font-family: var(--sans); font-weight: 500; font-size: clamp(16px, 2.2vw, 24px); margin-bottom: 14px; }
+    .body  { font-family: 'Inter', sans-serif; font-size: clamp(13px, 1.4vw, 16px); font-weight: 400; line-height: 1.8; color: var(--black); }
+    .body + .body { margin-top: 1em; }
+
+    /* ── SECTION BLOCK ── */
+    .s { padding: clamp(36px, 5vw, 72px) 0; }
+    .s-sm { padding: clamp(20px, 3vw, 40px) 0; }
+
+    /* ── TWO-COL: equal halves ── */
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: end; }
+    .sq-img { aspect-ratio: 1/1; overflow: hidden; border-radius: 40px; clip-path: inset(0 round 40px); }
+    .sq-img img { width: 100%; height: 100%; display: block; object-fit: cover; }
+
+    /* ── OVERVIEW ROLE/TEAM + IMAGE GRID ── */
+    .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 56px); margin-top: clamp(24px, 3vw, 40px); align-items: end; }
+
+    .meta-col .lbl { font-family: 'Inter', sans-serif; font-size: clamp(14px, 1.8vw, 20px); font-weight: 500; color: var(--black); margin-bottom: 8px; }
+    .meta-col .val { font-family: 'Inter', sans-serif; font-size: clamp(13px, 1.4vw, 16px); font-weight: 400; line-height: 1.8; color: var(--black); }
+
+    /* ── BULLET LIST ── */
+    .star-list { list-style: none; margin-top: 14px; }
+    .star-list li { display: flex; gap: 10px; margin-bottom: 8px; font-family: var(--sans); font-size: clamp(13px, 1.4vw, 16px); line-height: 1.7; }
+    .star-list li::before { content: '∗'; color: var(--gray); flex-shrink: 0; margin-top: 1px; }
+
+    /* ── CASE NAV ── */
+    .case-nav { border-top: 1px solid var(--black); padding: clamp(20px, 3vw, 40px) 0; margin-top: clamp(36px, 5vw, 64px); }
+    .case-nav-inner { display: flex; justify-content: space-between; }
+    .case-nav-link { font-family: var(--sans); font-size: clamp(13px, 1.2vw, 15px); color: var(--black); text-decoration: none; display: flex; align-items: center; gap: 8px; transition: opacity 0.2s; }
+    .case-nav-link:hover { opacity: 0.45; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .two, .overview-grid { grid-template-columns: 1fr; gap: 28px; }
+      .two .swap { order: -1; }
+      .overview-grid .sq-img, .overview-grid > div:last-child { order: -1; }
+      .sq-img { aspect-ratio: 4/3; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { gap: 14px; }
+      .nav-links li a { font-size: 13px; }
+      .case-header { flex-direction: column; gap: 0; }
+      .sq-img { aspect-ratio: 1/1; }
+      .footer-inner { flex-direction: column; gap: 28px; }
+      .footer-inner > div { flex-direction: row !important; justify-content: space-between; width: 100%; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a class="logo" href="index.html">
+      <img src="Zoe-logo.png" alt="Zoe Frost" style="height:32px;width:auto;display:block;" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="lab.html">Lab</a></li>
+      <li><a href="mailto:zoefrost@zoedeborahfrost.com">Let's Talk</a></li>
+    </ul>
+  </nav>
+
+  <div class="page">
+
+    <!-- ── TITLE ROW ── -->
+    <div class="case-header">
+      <h1 class="case-title">Endura</h1>
+      <span class="case-year">2025</span>
+    </div>
+    <hr class="rule" />
+
+    <!-- ── HERO IMAGE ── -->
+    <div class="hero-wrap reveal">
+      <img src="endura-images/en-1.png" alt="Hand holding phone showing Endura app" />
+    </div>
+
+    <!-- ── OVERVIEW ── -->
+    <div class="s reveal" style="padding-top: 24px;">
+      <h2 class="sec-h">Overview</h2>
+      <p class="body">Endura is a web-based platform designed to help young New Zealanders to navigate their fitness journey. This project addresses misinformation and unrealistic body standards that are commonly displayed on social media platforms while creating a healthy environment for people to grow and improve.</p>
+
+      <hr class="rule-light" style="margin: clamp(28px,4vw,52px) 0;" />
+
+      <!-- Role / Team + Image -->
+      <div class="overview-grid">
+        <div style="display:flex; gap:48px; align-items:flex-start; padding-bottom: 0;">
+          <div class="meta-col">
+            <p class="lbl">Role</p>
+            <p class="val">UX / UI Designer<br>Graphic Designer<br>Developer</p>
+          </div>
+          <div class="meta-col">
+            <p class="lbl">Team</p>
+            <p class="val">Solo Project</p>
+          </div>
+        </div>
+        <div style="aspect-ratio:1/1; overflow:hidden; border-radius:40px; clip-path:inset(0 round 40px);">
+          <img src="endura-images/en-2.png" alt="Hand holding phone showing Endura logo" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+      </div>
+    </div>
+
+    <hr class="rule-light" />
+
+    <!-- ── THE CHALLENGE: image left, text right ── -->
+    <div class="s">
+      <div class="two reveal">
+        <div>
+          <div class="sq-img"><img src="endura-images/en-3.png" alt="Hand holding phone showing Endura feed" /></div>
+        </div>
+        <div>
+          <h2 class="sec-h">The challenge</h2>
+          <p class="body">The challenge of this brief was to create and pitch a web-based media company that addresses a need from young people in Aotearoa New Zealand.</p>
+          <p class="body">For this, I chose to focus on fitness and specifically the challenges people face when it comes to working out.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="rule-light" />
+
+    <!-- ── THE PROBLEM: text left, image right ── -->
+    <div class="s">
+      <div class="two reveal">
+        <div>
+          <h2 class="sec-h">The problem</h2>
+          <p class="body">People are unable to trust the information they find online about working out due to the fake bodies displayed and the wide spread of misinformation.</p>
+        </div>
+        <div class="swap">
+          <div class="sq-img"><img src="endura-images/en-4.png" alt="Multiple phone screens showing Endura workout screens on grey background" /></div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="rule-light" />
+
+    <!-- ── FINDINGS: image left, text right ── -->
+    <div class="s">
+      <div class="two reveal">
+        <div>
+          <div class="sq-img"><img src="endura-images/en-5.png" alt="Black background with colourful N pattern" /></div>
+        </div>
+        <div>
+          <h2 class="sec-h">Findings</h2>
+          <p class="body">Through interviews and user testing, some of the main issues that my audience faced when it came to working out included the following:</p>
+          <ul class="star-list">
+            <li>Trust in online media has significantly reduced.</li>
+            <li>Short content is preferred</li>
+            <li>Young adults typically use social media platforms when seeking out information</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <hr class="rule-light" />
+
+    <!-- ── IDEATION: text left, image right ── -->
+    <div class="s">
+      <div class="two reveal">
+        <div>
+          <h2 class="sec-h">Ideation</h2>
+          <p class="body">Through my ideations, I explored how a web-based fitness media platform could create a trustworthy and healthy environment for young people online to workout. I developed the concepts around the user specifically and created a secondary part of the media to give users a sense of community, whether it was a blog, or other creative section for the users.</p>
+        </div>
+        <div class="swap">
+          <div class="sq-img"><img src="endura-images/en-6.png" alt="Navy background with phone mockups showing FAQ screens" /></div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="rule-light" />
+
+    <!-- ── THE SOLUTION: image left, text right ── -->
+    <div class="s">
+      <div class="two reveal">
+        <div>
+          <div class="sq-img"><img src="endura-images/en-7.png" alt="Multiple phone screens showing Endura app screens" /></div>
+        </div>
+        <div>
+          <h2 class="sec-h">The solution</h2>
+          <p class="body">The solution is a website that creates a tailored workout for the user in short videos and includes a blog where people can share their progress and ask the community questions.</p>
+          <p class="body">This gives users both the opportunity to learn, workout, and connect with their new found community.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="rule-light" />
+
+    <!-- ── APPROACH: text left, image right ── -->
+    <div class="s">
+      <div class="two reveal">
+        <div>
+          <h2 class="sec-h">Approach</h2>
+          <p class="body">My approach for Endura was highly focused on user testing and finding the underlying issues that people face when it comes to working out and trusting social media. The approach also focused on the following:</p>
+          <ul class="star-list">
+            <li>Branding</li>
+            <li>Sketching</li>
+            <li>User testing</li>
+            <li>Feedback</li>
+            <li>Paper prototyping</li>
+            <li>Lo-fi prototyping</li>
+            <li>Hi-fi prototyping</li>
+            <li>Coding</li>
+          </ul>
+        </div>
+        <div class="swap">
+          <div class="sq-img"><img src="endura-images/en-8.png" alt="Black background with two phone mockups showing Endura community screens" /></div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="rule-light" />
+
+    <!-- ── THE OUTCOME: image left, text right ── -->
+    <div class="s">
+      <div class="two reveal">
+        <div>
+          <div class="sq-img"><img src="endura-images/en-9.png" alt="Orange gradient background with two phone mockups showing Endura workout screens" /></div>
+        </div>
+        <div>
+          <h2 class="sec-h">The Outcome</h2>
+          <p class="body">The outcome of this project was Endura, a web-based fitness platform where people can select and create targeted workouts tailored to them. Through short and focused content, users are able to follow along with video content that clearly explains the workout.</p>
+          <p class="body">Overall, this project created a trustworthy and engaging platform for young kiwis to approach their fitness journey.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FINAL IMAGE (hero-style) ── -->
+    <div class="s-sm reveal">
+      <div style="line-height:0;height:clamp(400px,72vh,780px);overflow:hidden;border-radius:40px;clip-path:inset(0 round 40px);">
+        <img src="endura-images/en-10.png" alt="Laptop on table showing Endura website" style="width:100%;height:100%;display:block;object-fit:cover;object-position:center 20%;" />
+      </div>
+    </div>
+
+    <!-- ── CASE NAVIGATION ── -->
+    <div class="case-nav reveal">
+      <div class="case-nav-inner">
+        <a class="case-nav-link" href="projects.html">← Back to projects</a>
+        <a class="case-nav-link" href="project-remaro.html">Next project →</a>
+      </div>
+    </div>
+
+  </div><!-- /page -->
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <ul class="footer-nav">
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="lab.html">Lab</a></li>
+        <li><a href="mailto:zoefrost@zoedeborahfrost.com">Let's Talk</a></li>
+      </ul>
+      <div style="display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;">
+        <img src="Zoe-logo.png" alt="Zoe Frost" style="height:28px;width:auto;filter:brightness(0) invert(1);" />
+        <div class="footer-socials">
+          <a href="https://instagram.com" target="_blank" title="Instagram">
+            <svg class="social-icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://linkedin.com" target="_blank" title="LinkedIn">
+            <svg class="social-icon" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://github.com" target="_blank" title="GitHub">
+            <svg class="social-icon" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <p class="footer-copy">Zoe Frost 2026</p>
+  </footer>
+
+  
+
+  <script src="js/script.js"></script>
+</body>
+</html>

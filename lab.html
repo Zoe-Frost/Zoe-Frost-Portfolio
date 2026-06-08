@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Lab — Zoe Frost</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ── PAGE WRAPPER ── */
+
+    /* ── HERO ── */
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      padding-top: calc(var(--nav-h) + 16px);
+      padding-bottom: 80px;
+      display: flex;
+      flex-direction: column;
+    }
+    .slider-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+    /* ── SLIDING STRIP ── */
+    .hero-slider {
+      overflow: hidden;
+      height: clamp(180px, 28vw, 390px);
+      flex-shrink: 0;
+      margin-left: calc(-1 * var(--pad));
+      margin-right: calc(-1 * var(--pad));
+      width: calc(100% + var(--pad) * 2);
+    }
+    .hero-slider-track {
+      display: flex;
+      gap: 6px;
+      animation: slideLeft 30s linear infinite;
+      width: max-content;
+    }
+    .hero-slider.paused .hero-slider-track {
+      animation-play-state: paused;
+    }
+    @keyframes slideLeft {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .hero-slide-img {
+      width: clamp(180px, 28vw, 390px);
+      height: clamp(180px, 28vw, 390px);
+      background-size: 110%;
+      background-position: center;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 128px;
+      line-height: 1.05;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .flask-icon {
+      width: clamp(28px, 4vw, 56px);
+      height: clamp(28px, 4vw, 56px);
+      flex-shrink: 0;
+    }
+
+    /* ── INTRO ── */
+    .intro-section {
+      padding: 240px 0 300px;
+    }
+    .intro-body {
+      font-family: var(--sans);
+      font-size: clamp(18px, 3.43vw, 48px);
+      font-weight: 400;
+      line-height: 1.65;
+      padding-left: clamp(26px, 3.8vw, 56px);
+      position: relative;
+    }
+    .intro-body::before {
+      content: '↳';
+      position: absolute;
+      left: 0;
+      top: 2px;
+      font-family: var(--sans);
+      font-size: clamp(18px, 3.43vw, 48px);
+      font-weight: 400;
+    }
+
+    /* ── LAB GRID ── */
+    .lab-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(60px, 9vw, 140px);
+      padding: clamp(60px, 9vw, 140px) clamp(60px, 10vw, 180px) clamp(160px, 18vw, 260px);
+    }
+    .lab-item { display: flex; flex-direction: column; gap: 14px; }
+    .lab-img {
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border-radius: 40px;
+      clip-path: inset(0 round 40px);
+      line-height: 0;
+    }
+    .lab-img img {
+      width: 100%; height: 100%;
+      display: block; object-fit: cover;
+      transform: scale(1.08);
+    }
+    .lab-coming-soon {
+      aspect-ratio: 1 / 1;
+      background: var(--black);
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lab-coming-soon span {
+      font-family: var(--sans);
+      font-size: clamp(13px, 1.3vw, 16px);
+      font-weight: 400;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.01em;
+    }
+    .lab-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .lab-name {
+      font-family: var(--sans);
+      font-size: clamp(13px, 1.4vw, 17px);
+      font-weight: 400;
+      color: var(--black);
+    }
+    .lab-date {
+      font-family: var(--sans);
+      font-size: clamp(12px, 1.2vw, 15px);
+      font-weight: 400;
+      color: var(--black);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .intro-section { grid-template-columns: 1fr; }
+      .intro-section > :first-child { display: none; }
+      .lab-grid { gap: 16px; }
+    }
+    @media (max-width: 600px) {
+      .hero-section { min-height: 70vh; }
+      .lab-grid { grid-template-columns: 1fr; }
+      .lab-img, .lab-coming-soon { border-radius: 24px; clip-path: inset(0 round 24px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a class="logo" href="index.html">
+      <img src="Zoe-logo.png" alt="Zoe Frost" style="height:32px;width:auto;display:block;" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="lab.html" class="active">Lab</a></li>
+      <li><a href="mailto:zoefrost@zoedeborahfrost.com">Let's Talk</a></li>
+    </ul>
+  </nav>
+
+  <div class="page">
+
+    <!-- ── HERO ── -->
+    <section class="hero-section">
+
+      <!-- Sliding strip -->
+      <div class="slider-wrapper">
+      <div class="hero-slider">
+        <div class="hero-slider-track">
+          <!-- First set -->
+          <div class="hero-slide-img" style="background-image: url('lab-images/lab-1.png');"></div>
+          <div class="hero-slide-img" style="background-image: url('lab-images/lab-2.png');"></div>
+          <div class="hero-slide-img" style="background-image: url('lab-images/lab-3.png');"></div>
+          <div class="hero-slide-img" style="background-image: url('lab-images/lab-4.png');"></div>
+          <div class="hero-slide-img" style="background-image: url('lab-images/lab-5.png');"></div>
+          <!-- Duplicate set for seamless loop -->
+          <div class="hero-slide-img" style="background-image: url('lab-images/lab-1.png');"></div>
+          <div class="hero-slide-img" style="background-image: url('lab-images/lab-2.png');"></div>
+          <div class="hero-slide-img" style="background-image: url('lab-images/lab-3.png');"></div>
+          <div class="hero-slide-img" style="background-image: url('lab-images/lab-4.png');"></div>
+          <div class="hero-slide-img" style="background-image: url('lab-images/lab-5.png');"></div>
+        </div>
+      </div>
+      </div>
+
+      <h1 class="hero-title reveal">
+        The Lab
+        <svg class="flask-icon" viewBox="0 0 40 56" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <!-- flask neck -->
+          <line x1="14" y1="2" x2="14" y2="20" />
+          <line x1="26" y1="2" x2="26" y2="20" />
+          <!-- neck top rim -->
+          <line x1="11" y1="2" x2="29" y2="2" />
+          <!-- body: expands from neck down -->
+          <path d="M14 20 L4 46 Q3 52 8 53 L32 53 Q37 52 36 46 L26 20 Z" />
+          <!-- bubbles inside -->
+          <circle cx="16" cy="40" r="2" fill="currentColor" stroke="none" />
+          <circle cx="24" cy="45" r="1.5" fill="currentColor" stroke="none" />
+          <circle cx="20" cy="35" r="1" fill="currentColor" stroke="none" />
+        </svg>
+      </h1>
+    </section>
+
+    <!-- ── INTRO ── -->
+    <section class="intro-section reveal">
+      <p class="intro-body">Welcome to the lab where I post updates and works from my experimentation and exploration of technology and art</p>
+    </section>
+
+    <!-- ── LAB GRID ── -->
+    <section class="lab-grid">
+
+      <a class="lab-item reveal" href="lab-selfie-segmentation.html" style="text-decoration:none;color:inherit;">
+        <div class="lab-img">
+          <img src="lab-images/lab-5.png" alt="Selfie Segmentation" />
+        </div>
+        <div class="lab-meta">
+          <span class="lab-name">Selfie Segmentation</span>
+          <span class="lab-date">April 2026</span>
+        </div>
+      </a>
+
+      <div class="lab-item reveal">
+        <div class="lab-coming-soon">
+          <span>Coming soon</span>
+        </div>
+        <div class="lab-meta">
+          <span class="lab-name">Body Tracking</span>
+          <span class="lab-date">July 2026</span>
+        </div>
+      </div>
+
+    </section>
+
+  </div><!-- /page -->
+
+  <!-- ── FOOTER ── -->
+  <footer class="reveal">
+    <div class="footer-inner">
+      <ul class="footer-nav">
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="lab.html">Lab</a></li>
+        <li><a href="mailto:zoefrost@zoedeborahfrost.com">Let's Talk</a></li>
+      </ul>
+      <div style="display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;">
+        <img src="Zoe-logo.png" alt="Zoe Frost" style="height:28px;width:auto;filter:brightness(0) invert(1);" />
+        <div class="footer-socials">
+          <a href="https://instagram.com" target="_blank" title="Instagram">
+            <svg class="social-icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://linkedin.com" target="_blank" title="LinkedIn">
+            <svg class="social-icon" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://github.com" target="_blank" title="GitHub">
+            <svg class="social-icon" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <p class="footer-copy">Zoe Frost 2026</p>
+  </footer>
+
+  
+
+  <script src="js/script.js"></script>
+</body>
+</html>
