@@ -6,7 +6,7 @@
   <title>Zoe Frost — UX / UI Designer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400;500&family=IvyPresto+Display:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -196,6 +196,16 @@
 
     .proj-item {
       border-bottom: 1px solid var(--black);
+      transition: opacity 0.25s;
+    }
+
+    /* Dim all rows when any is hovered */
+    .proj-list:hover .proj-item {
+      opacity: 0.35;
+    }
+
+    .proj-list:hover .proj-item:hover {
+      opacity: 1;
     }
 
     /* Each row is a flex row centred horizontally */
@@ -203,29 +213,28 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 0;
+      padding: clamp(20px, 3.5vw, 44px) 0;
       cursor: pointer;
       text-decoration: none;
       color: inherit;
     }
 
     .proj-name {
-      font-family: var(--serif);
+      font-family: 'IvyPresto Display', Georgia, serif;
       font-size: clamp(38px, 6.8vw, 95px);
       font-weight: 400;
-      line-height: 1.15;
+      line-height: 1;
       white-space: nowrap;
       transition: opacity 0.2s;
     }
 
     .proj-row:hover .proj-name {
-      opacity: 0.65;
+      opacity: 1;
     }
 
     /* Preview image slot — expands on hover */
     .proj-preview {
       width: 0;
-      height: 100px;
       overflow: hidden;
       border-radius: 8px;
       flex-shrink: 0;
@@ -267,14 +276,17 @@
 
     .proj-icon {
       flex-shrink: 0;
-      margin-left: 14px;
+      margin-left: 18px;
       font-size: clamp(26px, 4.5vw, 64px);
-      line-height: 1;
+      line-height: 0;
+      display: inline-flex;
+      align-items: center;
+      align-self: center;
       transition: opacity 0.2s;
     }
 
     .proj-row:hover .proj-icon {
-      opacity: 0.65;
+      opacity: 1;
     }
 
     /* ── BIO ── */
@@ -388,6 +400,91 @@
       margin-left: auto;
       margin-right: auto;
     }
+
+    /* ── HAMBURGER / MOBILE MENU ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 300;
+      position: relative;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--black);
+      transition: transform 0.3s ease, opacity 0.2s ease, background 0.25s ease;
+      transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--white);
+      z-index: 200;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: calc(var(--nav-h) + 48px) var(--pad) var(--pad);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu-title {
+      font-family: 'IvyPresto Display', Georgia, serif;
+      font-size: clamp(52px, 18vw, 80px);
+      font-weight: 400;
+      color: var(--black);
+      line-height: 1;
+      margin-bottom: clamp(28px, 8vw, 52px);
+      display: block;
+    }
+    .mobile-menu a {
+      font-family: var(--sans);
+      font-size: clamp(20px, 5.5vw, 32px);
+      font-weight: 400;
+      color: var(--black);
+      text-decoration: none;
+      padding: clamp(14px, 3.5vw, 22px) 0;
+      border-bottom: 1px solid rgba(10,10,10,0.12);
+      width: 100%;
+      transition: opacity 0.2s;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu-close {
+      position: absolute;
+      top: 22px;
+      right: var(--pad);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mobile-menu-close span {
+      position: absolute;
+      width: 22px;
+      height: 1.5px;
+      background: var(--black);
+    }
+    .mobile-menu-close span:nth-child(1) { transform: rotate(45deg); }
+    .mobile-menu-close span:nth-child(2) { transform: rotate(-45deg); }
+    .mobile-menu a:hover { opacity: 0.5; }
+    @media (max-width: 600px) {
+      .nav-links { display: none !important; }
+      .hamburger { display: flex; }
+    }
   </style>
 </head>
 <body>
@@ -403,6 +500,9 @@
       <li><a href="lab.html">Lab</a></li>
       <li><a href="mailto:zoefrost@zoedeborahfrost.com">Let's Talk</a></li>
     </ul>
+    <button class="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <!-- ── HERO (parallax wrapper) ── -->
@@ -568,7 +668,46 @@
       });
     });
 
+
+    // Hamburger menu
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburger = document.querySelector('.hamburger');
+      const mobileMenu = document.querySelector('.mobile-menu');
+      if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', () => {
+          hamburger.classList.toggle('open');
+          mobileMenu.classList.toggle('open');
+          document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+        const closeBtn = mobileMenu.querySelector('.mobile-menu-close');
+        if (closeBtn) {
+          closeBtn.addEventListener('click', () => {
+            hamburger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+          });
+        }
+        mobileMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            hamburger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+    });
   </script>
+
+  <!-- ── MOBILE MENU ── -->
+  <div class="mobile-menu">
+    <button class="mobile-menu-close" aria-label="Close menu"><span></span><span></span></button>
+    <span class="mobile-menu-title">Menu</span>
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="about.html">About</a>
+    <a href="lab.html">Lab</a>
+    <a href="mailto:zoefrost@zoedeborahfrost.com">Let's Talk</a>
+  </div>
 
 </body>
 </html>
